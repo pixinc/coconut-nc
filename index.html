@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coconut — Agence Web & Logiciels Sur Mesure · Nouvelle-Calédonie</title>
+  <meta name="description" content="Coconut est une agence spécialisée en communication, développement web et logiciels sur mesure pour les entreprises de Nouvelle-Calédonie et au-delà." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --orange: #FF8C42;
+      --orange-light: #FFB27A;
+      --gold: #F4C430;
+      --dark: #1A2332;
+      --dark-2: #0F1623;
+      --dark-3: #232F42;
+      --dark-4: #2C3A52;
+      --cream: #FAF7F2;
+      --cream-2: #F0EBE3;
+      --text-dim: rgba(250,247,242,0.55);
+      --text-mid: rgba(250,247,242,0.80);
+      --border: rgba(255,140,66,0.15);
+      --border-light: rgba(250,247,242,0.08);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+      --shadow: 0 24px 60px rgba(0,0,0,0.4);
+      --glow: 0 0 40px rgba(255,140,66,0.2);
+    }
+
+    body {
+      background-color: var(--dark-2);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--orange); color: var(--dark-2); }
+
+    /* ─── SCROLLBAR ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark-2); }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+    /* ─── TYPOGRAPHY ────────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── LAYOUT ────────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 110px 0; }
+
+    /* ─── NOISE TEXTURE OVERLAY ──────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+
+    /* ─── NAVIGATION ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 22px 0;
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      padding: 14px 0;
+      background: rgba(15,22,35,0.75);
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    .logo-icon { width: 36px; height: 36px; flex-shrink: 0; }
+
+    .logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--orange);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--dark-2) !important;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-light) !important;
+      transform: translateY(-1px);
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--dark-2);
+    }
+
+    .hero-orb-1 {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,140,66,0.18) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      animation: float-orb 8s ease-in-out infinite;
+    }
+
+    .hero-orb-2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,196,48,0.10) 0%, transparent 70%);
+      bottom: -150px;
+      left: -150px;
+      animation: float-orb 11s ease-in-out infinite reverse;
+    }
+
+    .hero-orb-3 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,140,66,0.08) 0%, transparent 70%);
+      top: 40%;
+      left: 35%;
+      animation: float-orb 14s ease-in-out infinite;
+    }
+
+    @keyframes float-orb {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(30px,-20px) scale(1.05); }
+      66% { transform: translate(-15px,25px) scale(0.97); }
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,140,66,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,140,66,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,140,66,0.1);
+      border: 1px solid rgba(255,140,66,0.25);
+      border-radius: 100px;
+      padding: 6px 16px 6px 10px;
+      margin-bottom: 36px;
+      animation: fade-up 0.8s ease both;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    .hero-tag span { font-size: 0.78rem; font-weight: 500; color: var(--orange); }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      margin-bottom: 28px;
+      animation: fade-up 0.8s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero h1 em::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: underline-in 0.6s 0.9s ease both;
+    }
+
+    @keyframes underline-in { to { transform: scaleX(1); } }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+      animation: fade-up 0.8s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fade-up 0.8s 0.3s ease both;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: var(--dark-2);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 15px 30px;
+      border-radius: 100px;
+      transition: all var(--transition);
+      box-shadow: 0 8px 30px rgba(255,140,66,0.35);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(255,140,66,0.45);
+    }
+
+    .btn-primary svg { transition: transform var(--transition); }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cream);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 15px 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-secondary::after {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--orange);
+      transition: width var(--transition);
+    }
+
+    .btn-secondary:hover::after { width: 40px; }
+    .btn-secondary:hover { color: var(--orange); }
+
+    .hero-palm {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 420px;
+      opacity: 0.07;
+      pointer-events: none;
+      animation: fade-up 1.2s 0.5s ease both;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 48px;
+      right: 0;
+      display: flex;
+      gap: 40px;
+      animation: fade-up 0.8s 0.5s ease both;
+    }
+
+    .hero-stat { text-align: right; }
+    .hero-stat-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .hero-stat-label { font-size: 0.78rem; color: var(--text-dim); margin-top: 4px; }
+
+    /* ─── SECTION HEADERS ────────────────────────────────────────── */
+    .section-header { margin-bottom: 72px; }
+    .section-header.center { text-align: center; }
+    .section-header .label { margin-bottom: 16px; }
+    .section-header h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; }
+    .section-header p { font-size: 1.05rem; color: var(--text-mid); max-width: 520px; line-height: 1.7; }
+    .section-header.center p { margin: 0 auto; }
+
+    /* ─── SERVICES ──────────────────────────────────────────────── */
+    .services { background: var(--dark-2); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--dark-3);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,140,66,0.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,140,66,0.3);
+      box-shadow: var(--glow);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-number {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(255,140,66,0.07);
+      line-height: 1;
+      transition: color var(--transition);
+    }
+
+    .service-card:hover .service-number { color: rgba(255,140,66,0.12); }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,140,66,0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      transition: background var(--transition);
+    }
+
+    .service-card:hover .service-icon { background: rgba(255,140,66,0.2); }
+
+    .service-icon svg { width: 26px; height: 26px; color: var(--orange); }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .service-tag {
+      font-size: 0.73rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(255,140,66,0.08);
+      border: 1px solid rgba(255,140,66,0.15);
+      color: var(--orange-light);
+    }
+
+    /* ─── WHY COCONUT ────────────────────────────────────────────── */
+    .why { background: var(--dark); }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+      height: 480px;
+    }
+
+    .why-card-main {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 60px;
+      background: var(--dark-3);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 36px;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .why-card-main::before {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,140,66,0.15), transparent);
+    }
+
+    .why-card-accent {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 60px;
+      background: var(--dark-4);
+      border: 1px solid rgba(244,196,48,0.15);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .why-card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(244,196,48,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .why-card-icon svg { color: var(--gold); }
+
+    .why-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .why-feature {
+      padding: 28px;
+      background: var(--dark-3);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .why-feature:hover { border-color: rgba(255,140,66,0.25); transform: translateY(-3px); }
+
+    .why-feature-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,140,66,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .why-feature-icon svg { color: var(--orange); width: 22px; height: 22px; }
+
+    .why-feature h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .why-feature p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+    /* ─── RÉALISATIONS ───────────────────────────────────────────── */
+    .realisations { background: var(--dark-2); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: var(--dark-3);
+      border: 1px solid var(--border-light);
+      aspect-ratio: 16/10;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+
+    .project-card:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+    }
+
+    .project-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform var(--transition);
+    }
+
+    .project-card:hover .project-bg { transform: scale(1.04); }
+
+    .project-bg-1 {
+      background:
+        radial-gradient(circle at 30% 40%, rgba(255,140,66,0.25), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(244,196,48,0.15), transparent 50%),
+        var(--dark-3);
+    }
+    .project-bg-2 {
+      background:
+        radial-gradient(circle at 70% 30%, rgba(100,200,255,0.12), transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(255,140,66,0.1), transparent 50%),
+        var(--dark-3);
+    }
+    .project-bg-3 {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(180,100,255,0.12), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,140,66,0.1), transparent 50%),
+        var(--dark-3);
+    }
+    .project-bg-4 {
+      background:
+        radial-gradient(circle at 20% 60%, rgba(50,220,150,0.12), transparent 50%),
+        radial-gradient(circle at 75% 30%, rgba(244,196,48,0.1), transparent 50%),
+        var(--dark-3);
+    }
+
+    .project-mockup {
+      position: absolute;
+      inset: 20px;
+      border-radius: 8px;
+      background: rgba(15,22,35,0.6);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .project-mockup-bar {
+      height: 28px;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    .project-mockup-content {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mock-line {
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(250,247,242,0.08);
+    }
+
+    .mock-line.w-70 { width: 70%; }
+    .mock-line.w-50 { width: 50%; }
+    .mock-line.w-85 { width: 85%; }
+    .mock-line.w-40 { width: 40%; }
+    .mock-line.accent { background: rgba(255,140,66,0.3); }
+
+    .mock-block {
+      height: 40px;
+      border-radius: 6px;
+      background: rgba(255,140,66,0.12);
+      border: 1px solid rgba(255,140,66,0.2);
+      width: 120px;
+      margin-top: 4px;
+    }
+
+    .project-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 28px;
+      background: linear-gradient(to top, rgba(15,22,35,0.95) 0%, transparent 100%);
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all var(--transition);
+    }
+
+    .project-card:hover .project-info { transform: translateY(0); opacity: 1; }
+
+    .project-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    .project-info h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .project-info p { font-size: 0.82rem; color: var(--text-mid); }
+
+    /* ─── TÉMOIGNAGES ────────────────────────────────────────────── */
+    .temoignages { background: var(--dark); }
+
+    .temoignages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .temoignage-card {
+      background: var(--dark-3);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      position: relative;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .temoignage-card:hover {
+      border-color: rgba(255,140,66,0.25);
+      transform: translateY(-4px);
+    }
+
+    .quote-mark {
+      font-family: 'Syne', sans-serif;
+      font-size: 5rem;
+      line-height: 0.7;
+      color: var(--orange);
+      opacity: 0.25;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+    }
+
+    .star { color: var(--gold); font-size: 0.85rem; }
+
+    .temoignage-card blockquote {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .temoignage-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--dark-2);
+      flex-shrink: 0;
+    }
+
+    .author-name { font-weight: 600; font-size: 0.9rem; }
+    .author-role { font-size: 0.78rem; color: var(--text-dim); }
+
+    /* ─── À PROPOS ───────────────────────────────────────────────── */
+    .about { background: var(--dark-2); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-content .label { margin-bottom: 16px; }
+    .about-content h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 24px; }
+
+    .about-content p {
+      font-size: 0.98rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about-values {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .about-value {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--dark-3);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .value-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .about-value span { font-size: 0.9rem; font-weight: 500; }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-frame {
+      aspect-ratio: 4/5;
+      background: var(--dark-3);
+      border-radius: 20px;
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-img-inner {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,140,66,0.2), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(244,196,48,0.12), transparent 50%),
+        var(--dark-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-palm-icon { opacity: 0.15; }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--dark);
+      border: 1px solid rgba(244,196,48,0.25);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .badge-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(244,196,48,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+
+    .badge-text { font-size: 0.78rem; color: var(--text-dim); }
+    .badge-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--gold);
+      line-height: 1.1;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────────── */
+    .contact { background: var(--dark); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info .label { margin-bottom: 16px; }
+    .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 20px; }
+    .contact-info > p { font-size: 0.98rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 40px; }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,140,66,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--orange);
+    }
+
+    .contact-item-label { font-size: 0.75rem; color: var(--text-dim); }
+    .contact-item-value { font-size: 0.95rem; font-weight: 500; }
+
+    .contact-form {
+      background: var(--dark-3);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 44px 40px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group.full { grid-column: span 2; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--dark);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 13px 16px;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FF8C42' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-dim); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255,140,66,0.12);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--orange);
+      color: var(--dark-2);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: 0 8px 30px rgba(255,140,66,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(255,140,66,0.4);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border-light);
+      padding: 60px 0 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 32px;
+    }
+
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; max-width: 240px; }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: var(--dark-3);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      transition: all var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--orange);
+      color: var(--dark-2);
+      border-color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .footer-col h5 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      color: var(--cream);
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-bottom p { font-size: 0.82rem; color: var(--text-dim); }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a { font-size: 0.82rem; color: var(--text-dim); transition: color var(--transition); }
+    .footer-bottom-links a:hover { color: var(--orange); }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── MOBILE NAV ─────────────────────────────────────────────── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,22,35,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--cream);
+      transition: color var(--transition);
+    }
+
+    .mobile-menu a:hover { color: var(--orange); }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--cream);
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 8px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .why-visual { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { display: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .temoignages-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 72px 0; }
+      .hero-stats { display: none; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: span 1; aspect-ratio: 16/10; }
+      .why-features { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .contact-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     MOBILE MENU
+═════════════════════════════════════════════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose" aria-label="Fermer le menu">✕</button>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#realisations" onclick="closeMobile()">Réalisations</a>
+  <a href="#about" onclick="closeMobile()">À propos</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ════════════════════════════════════════════
+     NAVIGATION
+═════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="17" stroke="#FF8C42" stroke-width="1.5"/>
+          <path d="M18 28 C18 28 12 22 12 16 C12 12.686 14.686 10 18 10 C21.314 10 24 12.686 24 16 C24 22 18 28 18 28Z" fill="#FF8C42" opacity="0.9"/>
+          <path d="M18 10 C18 10 10 9 8 14" stroke="#F4C430" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 10 C18 10 26 9 28 14" stroke="#F4C430" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 10 C18 10 18 6 21 4" stroke="#F4C430" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="18" cy="16" r="3" fill="#1A2332"/>
+        </svg>
+        Coconut<span>.</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     HERO
+═════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-orb-1"></div>
+    <div class="hero-orb-2"></div>
+    <div class="hero-orb-3"></div>
+  </div>
+
+  <!-- Grand SVG palm en fond -->
+  <svg class="hero-palm" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M200 580 L200 200" stroke="#FF8C42" stroke-width="8" stroke-linecap="round"/>
+    <path d="M200 200 C200 200 120 150 60 120" stroke="#FF8C42" stroke-width="5" stroke-linecap="round"/>
+    <path d="M200 200 C200 200 280 150 340 120" stroke="#FF8C42" stroke-width="5" stroke-linecap="round"/>
+    <path d="M200 220 C200 220 100 200 30 190" stroke="#FF8C42" stroke-width="4" stroke-linecap="round"/>
+    <path d="M200 220 C200 220 300 200 370 190" stroke="#FF8C42" stroke-width="4" stroke-linecap="round"/>
+    <path d="M200 240 C200 240 140 260 100 290" stroke="#FF8C42" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M200 240 C200 240 260 260 300 290" stroke="#FF8C42" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="200" cy="195" r="20" fill="#FF8C42" opacity="0.4"/>
+    <circle cx="200" cy="195" r="10" fill="#F4C430" opacity="0.6"/>
+  </svg>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        <span>Agence digitale · Nouvelle-Calédonie</span>
+      </div>
+      <h1>Votre vision.<br /><em>Notre code.</em><br />Votre succès.</h1>
+      <p class="hero-sub">Communication, sites web et logiciels sur mesure pour les entreprises de Nouvelle-Calédonie et au-delà. On transforme vos idées en solutions digitales qui durent.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          Discutons de votre projet
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#realisations" class="btn-secondary">Voir nos réalisations</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">50+</div>
+        <div class="hero-stat-label">Projets livrés</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">98%</div>
+        <div class="hero-stat-label">Clients satisfaits</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">5+</div>
+        <div class="hero-stat-label">Ans d'expertise</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SERVICES
+═════════════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="label">Nos expertises</div>
+      <h2>Tout ce qu'il faut pour<br />réussir votre transition digitale</h2>
+      <p>De la stratégie de marque au logiciel métier, on couvre l'ensemble du spectre digital avec une approche 100% sur mesure.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Communication -->
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="13" cy="8" r="5"/>
+            <path d="M4 20c0-4.418 4.03-8 9-8s9 3.582 9 8"/>
+            <path d="M18 3l2 2-2 2"/>
+          </svg>
+        </div>
+        <h3>Communication & Branding</h3>
+        <p>Construisez une identité de marque forte et cohérente qui résonne avec vos clients. Du logo à la stratégie éditoriale, on vous accompagne à chaque étape.</p>
+        <div class="service-tags">
+          <span class="service-tag">Identité visuelle</span>
+          <span class="service-tag">Stratégie de marque</span>
+          <span class="service-tag">Print & Digital</span>
+          <span class="service-tag">Réseaux sociaux</span>
+        </div>
+      </div>
+
+      <!-- Web -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="4" width="20" height="15" rx="2"/>
+            <path d="M8 21h10M13 19v2"/>
+            <path d="M7 9l3 3-3 3"/>
+            <path d="M13 15h4"/>
+          </svg>
+        </div>
+        <h3>Développement Web</h3>
+        <p>Des sites qui convertissent et des applications qui performent. On conçoit des expériences web modernes, rapides et accessibles, adaptées à vos objectifs business.</p>
+        <div class="service-tags">
+          <span class="service-tag">Sites vitrines</span>
+          <span class="service-tag">E-commerce</span>
+          <span class="service-tag">Applications web</span>
+          <span class="service-tag">PWA & SPA</span>
+        </div>
+      </div>
+
+      <!-- Logiciels -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <rect x="4" y="4" width="8" height="8" rx="1.5"/>
+            <rect x="14" y="4" width="8" height="8" rx="1.5"/>
+            <rect x="4" y="14" width="8" height="8" rx="1.5"/>
+            <path d="M14 18h8M18 14v8"/>
+          </svg>
+        </div>
+        <h3>Logiciels Sur Mesure</h3>
+        <p>Automatisez vos processus et gagnez en efficacité avec des outils conçus exactement pour votre métier. ERP, CRM, applications internes — on code ce que vous imaginez.</p>
+        <div class="service-tags">
+          <span class="service-tag">ERP & CRM</span>
+          <span class="service-tag">Apps métier</span>
+          <span class="service-tag">Automatisation</span>
+          <span class="service-tag">APIs & Intégrations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     POURQUOI COCONUT
+═════════════════════════════════════════════ -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-inner">
+      <!-- Visuel gauche -->
+      <div class="why-visual reveal">
+        <div class="why-card-main">
+          <div class="label" style="margin-bottom:16px">Notre approche</div>
+          <h3 style="font-size:1.4rem;margin-bottom:12px">Un partenaire,<br/>pas un prestataire</h3>
+          <p style="font-size:0.88rem;color:var(--text-dim);line-height:1.7">On s'implique dans votre succès comme si c'était le nôtre. Chaque projet est une collaboration étroite, de la stratégie au déploiement.</p>
+          <div style="margin-top:24px;display:flex;gap:20px">
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--orange)">50+</div>
+              <div style="font-size:0.75rem;color:var(--text-dim)">Projets livrés</div>
+            </div>
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--gold)">98%</div>
+              <div style="font-size:0.75rem;color:var(--text-dim)">Satisfaction</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-card-accent">
+          <div class="why-card-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5L2 7.8l5.5-.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="badge-num">5+ ans</div>
+            <div class="badge-text">d'expertise en Nouvelle-Calédonie</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features droite -->
+      <div>
+        <div class="section-header reveal">
+          <div class="label">Pourquoi nous choisir</div>
+          <h2>Nos forces,<br/>votre avantage</h2>
+          <p>On combine expertise technique et connaissance du marché local pour vous livrer des solutions qui font vraiment la différence.</p>
+        </div>
+
+        <div class="why-features">
+          <div class="why-feature reveal reveal-delay-1">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M11 7v4l2.5 2.5"/>
+              </svg>
+            </div>
+            <h4>Expertise locale</h4>
+            <p>Enracinés en Nouvelle-Calédonie, on comprend votre marché, vos contraintes et vos clients.</p>
+          </div>
+
+          <div class="why-feature reveal reveal-delay-2">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+            </div>
+            <h4>100% Sur Mesure</h4>
+            <p>Aucun template. Chaque solution est pensée et construite spécifiquement pour vous.</p>
+          </div>
+
+          <div class="why-feature reveal reveal-delay-3">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <h4>Accompagnement complet</h4>
+            <p>De l'idée au déploiement et au-delà. On reste à vos côtés sur le long terme.</p>
+          </div>
+
+          <div class="why-feature reveal reveal-delay-4">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h4>Technologies modernes</h4>
+            <p>Stack technique à jour, performances optimales, solutions évolutives et pérennes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     RÉALISATIONS
+═════════════════════════════════════════════ -->
+<section class="realisations" id="realisations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="label">Nos réalisations</div>
+      <h2>Des projets qui parlent<br/>d'eux-mêmes</h2>
+      <p>Un aperçu de quelques projets représentatifs de notre expertise et de notre créativité.</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Projet 1 : grande carte -->
+      <div class="project-card reveal">
+        <div class="project-bg project-bg-1"></div>
+        <div class="project-mockup">
+          <div class="project-mockup-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div class="project-mockup-content">
+            <div class="mock-line accent w-50"></div>
+            <div class="mock-line w-85"></div>
+            <div class="mock-line w-70"></div>
+            <div class="mock-block"></div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <div class="mock-line" style="width:80px;height:60px;border-radius:6px;background:rgba(255,140,66,0.08)"></div>
+              <div class="mock-line" style="width:80px;height:60px;border-radius:6px;background:rgba(244,196,48,0.06)"></div>
+              <div class="mock-line" style="width:80px;height:60px;border-radius:6px;background:rgba(255,140,66,0.06)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">ERP sur mesure</div>
+          <h3>Plateforme de gestion KaléGest</h3>
+          <p>ERP complet pour un groupe de distribution — gestion stocks, commandes, facturation & RH</p>
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-bg project-bg-2"></div>
+        <div class="project-mockup">
+          <div class="project-mockup-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div class="project-mockup-content">
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(100,200,255,0.2)"></div>
+              <div class="mock-line w-50"></div>
+            </div>
+            <div class="mock-line w-85"></div>
+            <div class="mock-line w-70"></div>
+            <div class="mock-line w-40" style="margin-top:4px;background:rgba(100,200,255,0.2)"></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Site vitrine</div>
+          <h3>Nouméa Immo — Agence immobilière</h3>
+          <p>Site vitrine haut de gamme avec moteur de recherche de biens et visite virtuelle</p>
+        </div>
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-bg project-bg-3"></div>
+        <div class="project-mockup">
+          <div class="project-mockup-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div class="project-mockup-content">
+            <div class="mock-line accent w-40"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+              <div style="height:50px;border-radius:6px;background:rgba(180,100,255,0.1);border:1px solid rgba(180,100,255,0.15)"></div>
+              <div style="height:50px;border-radius:6px;background:rgba(255,140,66,0.08);border:1px solid rgba(255,140,66,0.12)"></div>
+            </div>
+            <div class="mock-line w-70" style="margin-top:8px"></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Application mobile & web</div>
+          <h3>PacificRide — Covoiturage local</h3>
+          <p>App de covoiturage adaptée aux spécificités géographiques calédoniennes</p>
+        </div>
+      </div>
+
+      <!-- Projet 4 -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-bg project-bg-4"></div>
+        <div class="project-mockup">
+          <div class="project-mockup-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div class="project-mockup-content">
+            <div class="mock-line w-50" style="background:rgba(50,220,150,0.2)"></div>
+            <div class="mock-line w-85"></div>
+            <div style="height:40px;border-radius:6px;background:rgba(50,220,150,0.08);border:1px solid rgba(50,220,150,0.15);margin-top:8px"></div>
+            <div class="mock-line w-40" style="margin-top:8px"></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-type">E-commerce</div>
+          <h3>Tribus Market — Artisanat kanak</h3>
+          <p>Boutique en ligne valorisant l'artisanat traditionnel avec paiement localisé</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TÉMOIGNAGES
+═════════════════════════════════════════════ -->
+<section class="temoignages" id="temoignages">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="label">Témoignages</div>
+      <h2>Ce que disent nos clients</h2>
+      <p>La satisfaction de nos partenaires est notre meilleure carte de visite.</p>
+    </div>
+
+    <div class="temoignages-grid">
+      <div class="temoignage-card reveal">
+        <span class="quote-mark">"</span>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <blockquote>Coconut a transformé notre façon de gérer notre entreprise. L'ERP qu'ils ont développé nous a permis d'économiser des heures de travail chaque semaine. L'équipe est réactive, à l'écoute et vraiment investie dans notre succès.</blockquote>
+        <div class="temoignage-author">
+          <div class="author-avatar">MK</div>
+          <div>
+            <div class="author-name">Marie Katriane</div>
+            <div class="author-role">Directrice, Groupe KaléDist</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="temoignage-card reveal reveal-delay-1">
+        <span class="quote-mark">"</span>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <blockquote>Notre nouveau site a multiplié nos leads par trois en moins de six mois. Le design est exactement ce qu'on voulait — professionnel, moderne, et qui correspond à notre image. Je recommande Coconut sans hésitation.</blockquote>
+        <div class="temoignage-author">
+          <div class="author-avatar">JL</div>
+          <div>
+            <div class="author-name">Jean-Louis Bertrand</div>
+            <div class="author-role">PDG, Nouméa Immo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="temoignage-card reveal reveal-delay-2">
+        <span class="quote-mark">"</span>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <blockquote>Ce qui nous a séduits chez Coconut, c'est leur compréhension profonde du marché calédonien. Ils n'ont pas essayé de copier ce qui se fait ailleurs — ils ont construit quelque chose d'unique, pensé pour nos réalités locales.</blockquote>
+        <div class="temoignage-author">
+          <div class="author-avatar">ST</div>
+          <div>
+            <div class="author-name">Sophie Tériierooiterai</div>
+            <div class="author-role">Fondatrice, Tribus Market</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     À PROPOS
+═════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-content">
+        <div class="label reveal">Notre histoire</div>
+        <h2 class="reveal">Nés en Calédonie,<br/>pensés pour le monde</h2>
+        <p class="reveal">Coconut est née d'un constat simple : les entreprises calédoniennes méritent des solutions digitales aussi ambitieuses que leurs projets. Trop souvent confrontées à des outils génériques inadaptés ou à des prestataires déconnectés de leurs réalités, elles n'avaient pas accès aux mêmes standards que leurs concurrents internationaux.</p>
+        <p class="reveal">On a fondé Coconut pour changer ça. En combinant expertise technique de pointe et ancrage local profond, on développe des solutions qui s'adaptent vraiment à votre contexte — pas l'inverse.</p>
+        <div class="about-values reveal">
+          <div class="about-value"><div class="value-dot"></div><span>Honnêteté &amp; transparence dans chaque échange</span></div>
+          <div class="about-value"><div class="value-dot"></div><span>Excellence technique sans compromis</span></div>
+          <div class="about-value"><div class="value-dot"></div><span>Impact concret sur votre business</span></div>
+          <div class="about-value"><div class="value-dot"></div><span>Engagement sur le long terme</span></div>
+        </div>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-img-frame">
+          <div class="about-img-inner">
+            <svg class="about-palm-icon" width="220" height="320" viewBox="0 0 220 320" fill="none">
+              <path d="M110 300 L110 120" stroke="#FF8C42" stroke-width="10" stroke-linecap="round"/>
+              <path d="M110 120 C110 120 60 90 20 60" stroke="#FF8C42" stroke-width="6" stroke-linecap="round"/>
+              <path d="M110 120 C110 120 160 90 200 60" stroke="#FF8C42" stroke-width="6" stroke-linecap="round"/>
+              <path d="M110 135 C110 135 40 125 5 120" stroke="#F4C430" stroke-width="5" stroke-linecap="round"/>
+              <path d="M110 135 C110 135 180 125 215 120" stroke="#F4C430" stroke-width="5" stroke-linecap="round"/>
+              <path d="M110 150 C110 150 65 170 40 195" stroke="#FF8C42" stroke-width="4" stroke-linecap="round"/>
+              <path d="M110 150 C110 150 155 170 180 195" stroke="#FF8C42" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="110" cy="118" r="18" fill="#FF8C42" opacity="0.4"/>
+              <circle cx="110" cy="118" r="9" fill="#F4C430" opacity="0.7"/>
+            </svg>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="badge-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="badge-num" style="color:var(--gold)">Certifié</div>
+            <div class="badge-text">Partenaire technologique local</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CONTACT
+═════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="label reveal">Contact</div>
+        <h2 class="reveal">Parlons de<br/>votre projet</h2>
+        <p class="reveal">Chaque grand projet commence par une conversation. Dites-nous ce que vous voulez accomplir, on vous propose la meilleure approche.</p>
+
+        <div class="contact-details reveal">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Adresse</div>
+              <div class="contact-item-value">Nouméa, Nouvelle-Calédonie</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8l7-5 7 5v9a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/><path d="M9 21V12h6v9"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">hello@coconut.nc</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V17a2 2 0 01-2 2h-1C9.716 19 3 12.284 3 4V3z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Téléphone</div>
+              <div class="contact-item-value">+687 XX XX XX</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nom complet *</label>
+              <input type="text" id="name" name="name" placeholder="Jean Dupont" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="jean@entreprise.nc" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+687 XX XX XX" />
+            </div>
+            <div class="form-group">
+              <label for="type">Type de projet *</label>
+              <select id="type" name="type" required>
+                <option value="" disabled selected>Choisissez…</option>
+                <option value="communication">Communication & Branding</option>
+                <option value="web">Développement Web</option>
+                <option value="logiciel">Logiciel sur mesure</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="message">Décrivez votre projet *</label>
+              <textarea id="message" name="message" placeholder="Parlez-nous de votre projet, vos objectifs, votre calendrier…" required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">
+            Envoyer ma demande
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+═════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="17" stroke="#FF8C42" stroke-width="1.5"/>
+            <path d="M18 28 C18 28 12 22 12 16 C12 12.686 14.686 10 18 10 C21.314 10 24 12.686 24 16 C24 22 18 28 18 28Z" fill="#FF8C42" opacity="0.9"/>
+            <path d="M18 10 C18 10 10 9 8 14" stroke="#F4C430" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M18 10 C18 10 26 9 28 14" stroke="#F4C430" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M18 10 C18 10 18 6 21 4" stroke="#F4C430" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="18" cy="16" r="3" fill="#1A2332"/>
+          </svg>
+          Coconut<span style="color:var(--orange)">.</span>
+        </a>
+        <p>Votre partenaire digital en Nouvelle-Calédonie. Communication, développement web et logiciels sur mesure.</p>
+        <div class="footer-socials">
+          <!-- LinkedIn -->
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Communication & Branding</a></li>
+          <li><a href="#services">Développement Web</a></li>
+          <li><a href="#services">Logiciels sur mesure</a></li>
+          <li><a href="#services">ERP & CRM</a></li>
+          <li><a href="#services">Applications mobiles</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Agence</h5>
+        <ul>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#realisations">Réalisations</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#contact">Carrières</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:hello@coconut.nc">hello@coconut.nc</a></li>
+          <li><a href="tel:+687000000">+687 XX XX XX</a></li>
+          <li><a href="#contact">Nouméa, Nouvelle-Calédonie</a></li>
+          <li><a href="#contact">Demander un devis</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Coconut. Tous droits réservés. Fait avec ♥ en Nouvelle-Calédonie.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGU</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+═════════════════════════════════════════════ -->
+<script>
+  // ── Navigation scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ── Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  mobileClose.addEventListener('click', closeMobile);
+
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ── Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ── Smooth nav link clicks
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ── Contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Message envoyé !';
+    btn.style.background = '#28a745';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = 'Envoyer ma demande <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+
+  // ── Hero parallax (subtle)
+  const hero = document.querySelector('.hero');
+  const heroBg = document.querySelector('.hero-bg');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < window.innerHeight) {
+      heroBg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+    }
+  }, { passive: true });
+
+  // ── Cursor glow (desktop only)
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.style.cssText = `
+      position: fixed; pointer-events: none; z-index: 9998;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,140,66,0.05) 0%, transparent 70%);
+      transform: translate(-50%,-50%); transition: opacity 0.3s;
+      top: 0; left: 0;
+    `;
+    document.body.appendChild(glow);
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  }
+</script>
+</body>
+</html>
