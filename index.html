@@ -240,8 +240,8 @@
     ═════════════════════════════════════════════════ */
     .hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 45% 55%;
+      display: flex;
+      align-items: center;
       position: relative;
       overflow: hidden;
       padding-top: 68px;
@@ -251,20 +251,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px 60px 80px 0;
+      padding: 80px 48px 80px 0;
       position: relative;
       z-index: 2;
-      background: #fff;
-    }
-
-    .hero-left::after {
-      content: '';
-      position: absolute;
-      top: 0; right: -40px; bottom: 0;
-      width: 80px;
-      background: #fff;
-      clip-path: polygon(0 0, 40px 0, 40px 100%, 0 100%);
-      z-index: 3;
+      width: 52%;
+      flex-shrink: 0;
     }
 
     .hero-tag {
@@ -325,10 +316,11 @@
       to   { opacity:1; transform:none; }
     }
 
-    /* Hero photo (right side) */
+    /* Hero photo — full-bleed behind everything */
     .hero-right {
-      position: relative;
-      overflow: hidden;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
     }
 
     .hero-photo {
@@ -336,14 +328,19 @@
       inset: 0;
     }
 
-
-    /* Gradient vignette */
+    /* White gradient overlay — strong on left, fades to transparent on right */
     .hero-photo-vignette {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(0,0,0,0.15) 0%, transparent 60%),
-        linear-gradient(to right, rgba(255,255,255,0.1) 0%, transparent 30%);
+      background: linear-gradient(
+        to right,
+        #ffffff 0%,
+        #ffffff 32%,
+        rgba(255,255,255,0.92) 44%,
+        rgba(255,255,255,0.55) 56%,
+        rgba(255,255,255,0.1) 68%,
+        transparent 78%
+      );
     }
 
     /* Big C logo overlay at junction */
@@ -983,8 +980,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 380px;
-      opacity: 0.055;
+      width: 520px;
+      opacity: 0.16;
       pointer-events: none;
     }
 
@@ -1102,10 +1099,10 @@
        RESPONSIVE
     ═════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 80px 0 60px; }
-      .hero-left::after { display: none; }
-      .hero-right { height: 400px; }
+      .hero { display: block; min-height: auto; padding-bottom: 0; }
+      .hero-left { width: 100%; padding: 80px 0 60px; background: #fff; }
+      .hero-right { position: relative; inset: auto; height: 400px; }
+      .hero-photo-vignette { background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, transparent 40%); }
       .hero-c-mark { display: none; }
       .engagement-inner { grid-template-columns: 1fr; }
       .engagement-photo { height: 360px; }
@@ -1124,7 +1121,7 @@
       .form-submit-wrap { grid-column: span 1; }
       .footer-main { grid-template-columns: 1fr; gap: 32px; }
       .cta-band-inner { flex-direction: column; align-items: flex-start; }
-      .hero-right { height: 300px; }
+      .hero-right { height: 260px; }
     }
 
     @media (max-width: 480px) {
@@ -1615,22 +1612,68 @@
 <!-- FOOTER ───────────────────────────────── -->
 <footer>
   <!-- Silhouette palmiers -->
-  <svg class="footer-palms" viewBox="0 0 380 480" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
-    <path d="M200 480 Q195 380 210 300 Q222 240 240 210" stroke="white" stroke-width="12" stroke-linecap="round" fill="none"/>
-    <path d="M240 210 Q195 175 145 145" stroke="white" stroke-width="8" stroke-linecap="round" fill="none"/>
-    <path d="M240 210 Q280 170 330 150" stroke="white" stroke-width="8" stroke-linecap="round" fill="none"/>
-    <path d="M240 210 Q215 185 185 175" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
-    <path d="M240 210 Q262 188 285 182" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
-    <path d="M240 210 Q232 180 225 155 Q218 130 215 115" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
-    <path d="M80 480 Q78 400 88 345 Q96 305 108 285" stroke="white" stroke-width="8" stroke-linecap="round" fill="none"/>
-    <path d="M108 285 Q78 262 48 242" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <path d="M108 285 Q132 260 162 248" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <path d="M108 285 Q92 268 72 262" stroke="white" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-    <path d="M108 285 Q122 270 138 266" stroke="white" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-    <path d="M340 480 Q338 418 346 370 Q352 338 362 320" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
-    <path d="M362 320 Q340 302 310 288" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <path d="M362 320 Q380 300 378 280" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <path d="M362 320 Q348 305 334 300" stroke="white" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <svg class="footer-palms" viewBox="0 0 520 700" fill="white" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
+    <!-- ── PALM 1 (large, right) — crown at 390,95 ── -->
+    <!-- Trunk -->
+    <path d="M 378 700 C 375 560 372 380 380 230 C 384 175 387 130 390 95 L 400 93 C 402 130 403 175 405 230 C 408 380 408 560 404 700 Z"/>
+    <!-- Frond → right, slight droop -->
+    <path d="M 395 94 C 428 78 478 72 528 88 C 502 102 454 102 395 108 Z"/>
+    <!-- Frond → upper-right -->
+    <path d="M 395 94 C 420 68 458 46 502 38 C 486 58 450 78 395 104 Z"/>
+    <!-- Frond → up -->
+    <path d="M 395 94 C 389 65 384 32 388 -8 C 394 32 398 65 400 94 Z"/>
+    <!-- Frond → upper-left -->
+    <path d="M 395 94 C 368 66 330 46 285 40 C 304 60 340 80 395 104 Z"/>
+    <!-- Frond → left, slight droop -->
+    <path d="M 395 94 C 358 82 312 80 262 96 C 300 108 348 108 395 108 Z"/>
+    <!-- Frond → lower-left droop -->
+    <path d="M 395 94 C 365 104 330 128 295 165 C 318 148 358 118 395 108 Z"/>
+    <!-- Frond → lower droop -->
+    <path d="M 395 94 C 384 112 374 148 368 192 C 380 162 392 128 400 100 Z"/>
+    <!-- Frond → lower-right droop -->
+    <path d="M 395 94 C 420 106 452 128 478 168 C 458 148 426 116 395 106 Z"/>
+    <!-- Coconuts -->
+    <circle cx="392" cy="114" r="10"/>
+    <circle cx="404" cy="108" r="8"/>
+    <circle cx="382" cy="110" r="9"/>
+
+    <!-- ── PALM 2 (medium, center-left) — crown at 185,255 ── -->
+    <!-- Trunk -->
+    <path d="M 176 700 C 175 580 174 440 178 320 C 180 295 182 272 185 255 L 193 255 C 194 272 195 295 196 320 C 198 440 196 580 194 700 Z"/>
+    <!-- Frond → right -->
+    <path d="M 189 255 C 210 244 245 240 278 252 C 254 264 220 264 189 263 Z"/>
+    <!-- Frond → upper-right -->
+    <path d="M 189 255 C 208 234 232 218 258 212 C 242 226 218 244 189 262 Z"/>
+    <!-- Frond → up -->
+    <path d="M 189 255 C 184 232 181 205 183 175 C 188 205 192 232 193 255 Z"/>
+    <!-- Frond → upper-left -->
+    <path d="M 189 255 C 170 234 146 218 118 214 C 135 228 158 244 189 262 Z"/>
+    <!-- Frond → left -->
+    <path d="M 189 255 C 164 246 130 244 95 254 C 122 265 158 265 189 263 Z"/>
+    <!-- Frond → lower-left droop -->
+    <path d="M 189 255 C 170 264 148 282 128 308 C 144 292 166 268 189 264 Z"/>
+    <!-- Frond → lower-right droop -->
+    <path d="M 189 255 C 208 264 228 282 242 308 C 228 292 208 268 189 264 Z"/>
+    <!-- Coconuts -->
+    <circle cx="187" cy="270" r="7"/>
+    <circle cx="195" cy="266" r="6"/>
+    <circle cx="180" cy="267" r="6"/>
+
+    <!-- ── PALM 3 (small, far left) — crown at 55,375 ── -->
+    <!-- Trunk -->
+    <path d="M 49 700 C 48 620 49 530 51 455 C 52 425 53 398 55 375 L 61 375 C 62 398 63 425 63 455 C 64 530 63 620 61 700 Z"/>
+    <!-- Frond → right -->
+    <path d="M 58 375 C 72 367 92 364 112 372 C 98 380 78 380 58 381 Z"/>
+    <!-- Frond → upper-right -->
+    <path d="M 58 375 C 70 360 85 350 101 346 C 91 356 76 368 58 380 Z"/>
+    <!-- Frond → up -->
+    <path d="M 58 375 C 55 358 53 338 54 315 C 58 338 60 358 61 375 Z"/>
+    <!-- Frond → upper-left -->
+    <path d="M 58 375 C 46 360 28 350 8 347 C 20 358 38 368 58 380 Z"/>
+    <!-- Frond → left -->
+    <path d="M 58 375 C 42 368 22 366 0 374 C 20 382 42 382 58 381 Z"/>
+    <!-- Frond → lower droop -->
+    <path d="M 58 375 C 52 384 46 400 43 420 C 50 406 58 388 61 378 Z"/>
   </svg>
 
   <div class="container" style="position:relative">
