@@ -651,6 +651,56 @@
       line-height: 1.3;
     }
 
+    /* Badge "En cours" */
+    .badge-wip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      background: var(--teal-pale);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-bottom: 4px;
+    }
+
+    .badge-wip::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #f59e0b;
+    }
+
+    /* App store badges */
+    .app-badges {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--teal);
+      background: var(--teal-pale);
+      border: 1px solid var(--teal-pale2);
+      border-radius: 6px;
+      padding: 4px 9px;
+    }
+
+    /* kikoo card thumb */
+    .pt-kikoo {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
     /* Carousel arrows */
     .carousel-arrow {
       position: absolute;
@@ -990,10 +1040,10 @@
       background: linear-gradient(
         to bottom,
         var(--footer) 0%,
-        rgba(10,38,36,0.97) 25%,
-        rgba(10,38,36,0.82) 55%,
-        rgba(10,38,36,0.55) 80%,
-        rgba(10,38,36,0.35) 100%
+        rgba(10,38,36,0.98) 35%,
+        rgba(10,38,36,0.92) 60%,
+        rgba(10,38,36,0.78) 80%,
+        rgba(10,38,36,0.65) 100%
       );
     }
 
@@ -1021,7 +1071,7 @@
 
     .footer-tagline {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.75);
       line-height: 1.6;
       margin-top: 12px;
       max-width: 220px;
@@ -1063,10 +1113,10 @@
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul a {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.82);
       transition: color var(--T);
     }
-    .footer-col ul a:hover { color: rgba(255,255,255,0.9); }
+    .footer-col ul a:hover { color: #fff; }
 
     .footer-bottom {
       position: relative;
@@ -1078,11 +1128,11 @@
       flex-wrap: wrap;
     }
 
-    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
 
     .footer-legal { display: flex; gap: 20px; }
-    .footer-legal a { font-size: 0.82rem; color: rgba(255,255,255,0.35); transition: color var(--T); }
-    .footer-legal a:hover { color: rgba(255,255,255,0.7); }
+    .footer-legal a { font-size: 0.82rem; color: rgba(255,255,255,0.65); transition: color var(--T); }
+    .footer-legal a:hover { color: #fff; }
 
     /* ════════════════════════════════════════════════
        MOBILE MENU
@@ -1353,33 +1403,53 @@
       <div class="carousel-track-outer">
         <div class="carousel-track" id="carouselTrack">
 
+          <!-- kikoo.nc — projet livré -->
           <div class="project-card">
-            <div class="project-thumb pt-1">
-              <div class="device-sim">
-                <div class="device-bar">
-                  <div class="dev-dot dev-r"></div>
-                  <div class="dev-dot dev-y"></div>
-                  <div class="dev-dot dev-g"></div>
+            <div class="project-thumb pt-kikoo">
+              <!-- Simulation phone + web -->
+              <div class="device-sim" style="left:30%;right:auto;width:90px;border-radius:16px;bottom:10px;top:10px;background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15)">
+                <div class="device-bar" style="height:16px;justify-content:center;background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1)">
+                  <div style="width:20px;height:3px;border-radius:2px;background:rgba(255,255,255,0.25)"></div>
                 </div>
                 <div class="device-content">
-                  <div class="dev-line accent"></div>
-                  <div class="dev-line w80"></div>
-                  <div class="dev-grid">
-                    <div class="dev-cell"></div>
-                    <div class="dev-cell"></div>
-                    <div class="dev-cell"></div>
-                    <div class="dev-cell"></div>
-                  </div>
-                  <div class="dev-line w60"></div>
+                  <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.15);margin:0 auto 6px"></div>
+                  <div style="height:5px;border-radius:3px;background:rgba(255,255,255,0.2);width:70%;margin:0 auto 4px"></div>
+                  <div style="height:4px;border-radius:3px;background:rgba(255,255,255,0.1);width:50%;margin:0 auto"></div>
                 </div>
               </div>
+              <div class="device-sim" style="right:12%;left:auto;width:110px;top:12px;bottom:12px;background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12)">
+                <div class="device-bar" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1)">
+                  <div style="width:40px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2)"></div>
+                </div>
+                <div class="device-content">
+                  <div style="height:5px;border-radius:3px;background:rgba(255,255,255,0.3);width:80%;margin-bottom:5px"></div>
+                  <div style="height:4px;border-radius:3px;background:rgba(255,255,255,0.15);width:60%;margin-bottom:8px"></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                    <div style="height:18px;border-radius:3px;background:rgba(255,255,255,0.1)"></div>
+                    <div style="height:18px;border-radius:3px;background:rgba(255,255,255,0.1)"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Logo texte -->
+              <div style="position:absolute;bottom:14px;left:12px;font-size:0.75rem;font-weight:800;color:rgba(255,255,255,0.5);letter-spacing:0.05em">kikoo.nc</div>
             </div>
             <div class="project-info">
-              <div class="project-category">Logiciel métier</div>
-              <h4>Plateforme de gestion</h4>
+              <div class="project-category">Réseau social · Nouvelle-Calédonie</div>
+              <h4>kikoo.nc</h4>
+              <div class="app-badges">
+                <span class="app-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.66.2.99.08l11.65-11.65L4.17.54C3.84.42 3.48.45 3.18.62 2.58.97 2.25 1.6 2.25 2.4v19.2c0 .8.33 1.43.93 1.16z"/><path d="M17.77 8.53l-2.24-1.29-3.1 3.1 3.1 3.1 2.27-1.31c.65-.37 1.02-.98 1.02-1.8s-.4-1.43-1.05-1.8z"/><path d="M4.17.54l11.36 6.7-2.14 2.14z"/><path d="M4.17 23.46l9.22-9.22 2.14 2.14z"/></svg>
+                  Android
+                </span>
+                <span class="app-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                  iOS
+                </span>
+              </div>
             </div>
           </div>
 
+          <!-- Projets en cours -->
           <div class="project-card">
             <div class="project-thumb pt-2">
               <div class="device-sim">
@@ -1397,7 +1467,7 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="project-category">Tourisme</div>
+              <div class="badge-wip">En cours de développement</div>
               <h4>Site vitrine</h4>
             </div>
           </div>
@@ -1417,7 +1487,7 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="project-category">Services</div>
+              <div class="badge-wip">En cours de développement</div>
               <h4>Application mobile</h4>
             </div>
           </div>
@@ -1445,8 +1515,8 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="project-category">Industrie</div>
-              <h4>Intranet collaboratif</h4>
+              <div class="badge-wip">En cours de développement</div>
+              <h4>Logiciel métier</h4>
             </div>
           </div>
 
@@ -1467,8 +1537,8 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="project-category">E-commerce</div>
-              <h4>Boutique en ligne</h4>
+              <div class="badge-wip">En cours de développement</div>
+              <h4>E-commerce</h4>
             </div>
           </div>
 
