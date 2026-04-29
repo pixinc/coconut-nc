@@ -675,6 +675,19 @@
       background: #f59e0b;
     }
 
+    .carousel-note {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .carousel-note svg { flex-shrink: 0; color: var(--teal-light); }
+
     /* App store badges */
     .app-badges {
       display: flex;
@@ -1334,7 +1347,7 @@
           </svg>
         </div>
         <h3>Logiciels métier<br/>sur mesure</h3>
-        <p>Des outils adaptés à vos processus pour gagner en efficacité au quotidien. ERP, CRM, automatisation et intégrations sur mesure.</p>
+        <p>Des outils adaptés à vos processus pour gagner en efficacité au quotidien. ERP, CRM, applications métiers SMS, automatisation et intégrations sur mesure.</p>
         <a href="#contact" class="service-link">
           En savoir plus
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7h10M8 4l3 3-3 3"/></svg>
@@ -1467,7 +1480,7 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="badge-wip">En cours de développement</div>
+              <div class="badge-wip">Projet client · en cours</div>
               <h4>Site vitrine</h4>
             </div>
           </div>
@@ -1487,7 +1500,7 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="badge-wip">En cours de développement</div>
+              <div class="badge-wip">Projet client · en cours</div>
               <h4>Application mobile</h4>
             </div>
           </div>
@@ -1515,7 +1528,7 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="badge-wip">En cours de développement</div>
+              <div class="badge-wip">Projet client · en cours</div>
               <h4>Logiciel métier</h4>
             </div>
           </div>
@@ -1537,7 +1550,7 @@
               </div>
             </div>
             <div class="project-info">
-              <div class="badge-wip">En cours de développement</div>
+              <div class="badge-wip">Projet client · en cours</div>
               <h4>E-commerce</h4>
             </div>
           </div>
@@ -1555,6 +1568,11 @@
         <button class="carousel-dot" data-idx="2"></button>
       </div>
     </div>
+
+    <p class="carousel-note reveal">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Les projets clients en cours ne peuvent pas encore être présentés publiquement — confidentialité respectée.
+    </p>
   </div>
 </section>
 
