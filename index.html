@@ -336,72 +336,6 @@
       inset: 0;
     }
 
-    /* CSS-generated tropical beach scene */
-    .hero-photo-sky {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg,
-        #8EC8D8 0%,
-        #7DBDCF 15%,
-        #A8D4D0 28%,
-        #6AB5B0 35%,
-        #4EA8A0 45%,
-        #3D9A92 55%,
-        #D4C098 65%,
-        #E8D4A0 72%,
-        #C8B880 80%,
-        #B8A878 88%,
-        #A89868 100%
-      );
-    }
-
-    /* Ocean shimmer */
-    .hero-photo-shimmer {
-      position: absolute;
-      top: 40%; left: 0; right: 0; bottom: 40%;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(255,255,255,0.08) 30%,
-        rgba(255,255,255,0.15) 50%,
-        rgba(255,255,255,0.08) 70%,
-        transparent 100%
-      );
-      animation: shimmer 4s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0%, 100% { opacity: 0.4; transform: translateX(-10px); }
-      50% { opacity: 1; transform: translateX(10px); }
-    }
-
-    /* Warm overlay for golden hour feel */
-    .hero-photo-warm {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg,
-        rgba(255,200,120,0.18) 0%,
-        transparent 50%,
-        rgba(10,92,85,0.12) 100%
-      );
-    }
-
-    /* Palm silhouettes */
-    .hero-palms {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 70%;
-      pointer-events: none;
-    }
-
-    /* Rocks/sand at bottom */
-    .hero-sand {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 20%;
-      background: linear-gradient(180deg, transparent, rgba(180,150,100,0.5) 60%, rgba(160,130,80,0.7));
-    }
 
     /* Gradient vignette */
     .hero-photo-vignette {
@@ -517,44 +451,6 @@
       overflow: hidden;
     }
 
-    /* CSS aerial ocean scene */
-    .aerial-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 25% 35%, rgba(90,200,185,0.75) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 35% at 70% 65%, rgba(120,210,195,0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 40% at 55% 20%, rgba(150,225,210,0.5) 0%, transparent 45%),
-        radial-gradient(ellipse 35% 30% at 80% 40%, rgba(80,170,160,0.5) 0%, transparent 45%),
-        linear-gradient(145deg, #0A6860 0%, #0D8075 25%, #1A9A8A 45%, #0D7870 65%, #0A5C55 100%);
-    }
-
-    /* Reef/island organic shapes */
-    .aerial-shapes { position: absolute; inset: 0; }
-
-    /* Water highlights */
-    .aerial-highlight {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      filter: blur(2px);
-    }
-
-    .aerial-h1 { width:120px;height:60px; top:20%;left:15%; transform:rotate(-15deg); }
-    .aerial-h2 { width:80px;height:40px; top:50%;left:55%; transform:rotate(25deg); }
-    .aerial-h3 { width:60px;height:30px; top:30%;left:65%; transform:rotate(-5deg); }
-    .aerial-h4 { width:140px;height:50px; top:65%;left:20%; transform:rotate(10deg); }
-
-    /* Sand patches */
-    .aerial-sand {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(200,180,120,0.35);
-      filter: blur(4px);
-    }
-
-    .aerial-s1 { width:100px;height:70px; top:55%;left:30%; }
-    .aerial-s2 { width:70px;height:50px; top:25%;left:45%; }
 
     .engagement-text {
       padding: 80px 60px;
@@ -1257,12 +1153,10 @@
 
       <a href="#" class="logo">
         <!-- Logo mark : deux formes en C formant une noix de coco -->
-        <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="17" fill="#EAF5F4"/>
-          <path d="M24 10.5 C24 10.5 28 13 28 18 C28 23 24 25.5 24 25.5" stroke="#0A5C55" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M18 8 C12 8 8 12.5 8 18 C8 23.5 12 28 18 28 C20 28 22 27.2 23.5 25.9" stroke="#0D7269" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <circle cx="18" cy="18" r="4" fill="#0A5C55" opacity="0.15"/>
-          <circle cx="18" cy="18" r="2" fill="#0A5C55" opacity="0.5"/>
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" fill="#EAF5F4"/>
+          <path d="M30 12 C26 7.5 17.5 6.5 12.5 11.5 C7 17 7 23 12.5 28.5 C17.5 33.5 26 32.5 30 28" stroke="#0A5C55" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <path d="M26.5 16 C24 13 18.5 12.5 15.5 15.5 C12 19 12 21 15.5 24.5 C18.5 27.5 24 27 26.5 24" stroke="#0A5C55" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.45"/>
         </svg>
         <span class="logo-text">coconut<span>.nc</span></span>
       </a>
@@ -1301,36 +1195,9 @@
     </div>
   </div>
 
-  <!-- Côté droit : scène tropicale CSS -->
+  <!-- Côté droit : vraie photo Nouvelle-Calédonie -->
   <div class="hero-right">
-    <div class="hero-photo">
-      <div class="hero-photo-sky"></div>
-      <div class="hero-photo-shimmer"></div>
-      <div class="hero-photo-warm"></div>
-      <div class="hero-sand"></div>
-      <!-- Palmiers SVG -->
-      <svg class="hero-palms" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-        <!-- Palmier gauche -->
-        <path d="M80 400 Q75 300 90 240 Q100 200 110 180" stroke="rgba(20,50,30,0.7)" stroke-width="7" stroke-linecap="round" fill="none"/>
-        <path d="M110 180 Q80 155 50 130" stroke="rgba(20,50,30,0.65)" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M110 180 Q130 145 160 125" stroke="rgba(20,50,30,0.65)" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M110 180 Q95 160 70 150" stroke="rgba(20,50,30,0.6)" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <path d="M110 180 Q125 165 145 160" stroke="rgba(20,50,30,0.6)" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <path d="M110 180 Q105 155 100 135 Q95 115 92 105" stroke="rgba(20,50,30,0.55)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-        <!-- Palmier central -->
-        <path d="M300 400 Q295 330 310 270 Q320 230 335 205" stroke="rgba(15,40,25,0.75)" stroke-width="9" stroke-linecap="round" fill="none"/>
-        <path d="M335 205 Q295 175 250 145" stroke="rgba(15,40,25,0.7)" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <path d="M335 205 Q365 170 410 150" stroke="rgba(15,40,25,0.7)" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <path d="M335 205 Q315 178 290 165" stroke="rgba(15,40,25,0.65)" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M335 205 Q355 182 375 175" stroke="rgba(15,40,25,0.65)" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M335 205 Q328 175 320 155 Q312 135 308 118" stroke="rgba(15,40,25,0.6)" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <!-- Palmier droit -->
-        <path d="M490 400 Q488 335 500 275 Q510 235 520 215" stroke="rgba(20,50,30,0.65)" stroke-width="7" stroke-linecap="round" fill="none"/>
-        <path d="M520 215 Q490 185 455 165" stroke="rgba(20,50,30,0.6)" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M520 215 Q545 180 580 165" stroke="rgba(20,50,30,0.6)" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M520 215 Q505 192 485 185" stroke="rgba(20,50,30,0.55)" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <path d="M520 215 Q536 196 552 192" stroke="rgba(20,50,30,0.55)" stroke-width="4" stroke-linecap="round" fill="none"/>
-      </svg>
+    <div class="hero-photo" style="background-image:url('https://images.unsplash.com/photo-1596458162095-1daa37e973ec?auto=format&fit=crop&w=1600&q=85');background-size:cover;background-position:center;">
       <div class="hero-photo-vignette"></div>
     </div>
 
@@ -1412,22 +1279,8 @@
 <section class="engagement" id="about">
   <div class="engagement-inner">
     <!-- Photo côté gauche -->
-    <div class="engagement-photo">
-      <div class="aerial-bg"></div>
-      <div class="aerial-shapes">
-        <div class="aerial-highlight aerial-h1"></div>
-        <div class="aerial-highlight aerial-h2"></div>
-        <div class="aerial-highlight aerial-h3"></div>
-        <div class="aerial-highlight aerial-h4"></div>
-        <div class="aerial-sand aerial-s1"></div>
-        <div class="aerial-sand aerial-s2"></div>
-      </div>
-      <!-- Palmiers aériens simplifiés -->
-      <svg style="position:absolute;bottom:0;left:0;right:0;opacity:0.15;pointer-events:none" viewBox="0 0 500 300" fill="none" preserveAspectRatio="xMidYMax meet">
-        <circle cx="120" cy="180" r="60" fill="#fff" opacity="0.3"/>
-        <circle cx="350" cy="220" r="80" fill="#fff" opacity="0.2"/>
-        <circle cx="250" cy="150" r="50" fill="#fff" opacity="0.25"/>
-      </svg>
+    <div class="engagement-photo" style="background-image:url('https://images.unsplash.com/photo-1696580436068-f19c26850e8b?auto=format&fit=crop&w=1200&q=85');background-size:cover;background-position:center;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right, transparent 60%, rgba(248,247,244,0.15));"></div>
     </div>
 
     <!-- Texte côté droit -->
@@ -1784,11 +1637,10 @@
     <div class="footer-main">
       <div class="footer-brand">
         <a href="#" class="logo">
-          <svg class="logo-mark" viewBox="0 0 36 36" fill="none">
-            <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,0.08)"/>
-            <path d="M24 10.5 C24 10.5 28 13 28 18 C28 23 24 25.5 24 25.5" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <path d="M18 8 C12 8 8 12.5 8 18 C8 23.5 12 28 18 28 C20 28 22 27.2 23.5 25.9" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <circle cx="18" cy="18" r="2" fill="rgba(255,255,255,0.5)"/>
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="19" fill="rgba(255,255,255,0.08)"/>
+            <path d="M30 12 C26 7.5 17.5 6.5 12.5 11.5 C7 17 7 23 12.5 28.5 C17.5 33.5 26 32.5 30 28" stroke="rgba(255,255,255,0.9)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M26.5 16 C24 13 18.5 12.5 15.5 15.5 C12 19 12 21 15.5 24.5 C18.5 27.5 24 27 26.5 24" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
           </svg>
           <span class="logo-text">coconut<span>.nc</span></span>
         </a>
