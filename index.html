@@ -328,18 +328,18 @@
       inset: 0;
     }
 
-    /* White gradient overlay — strong on left, fades to transparent on right */
+    /* White → teal gradient overlay */
     .hero-photo-vignette {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to right,
         #ffffff 0%,
-        #ffffff 32%,
-        rgba(255,255,255,0.92) 44%,
-        rgba(255,255,255,0.55) 56%,
-        rgba(255,255,255,0.1) 68%,
-        transparent 78%
+        #ffffff 26%,
+        rgba(234,245,244,0.97) 36%,
+        rgba(91,181,174,0.38) 50%,
+        rgba(13,114,105,0.12) 64%,
+        transparent 74%
       );
     }
 
@@ -973,6 +973,28 @@
       color: rgba(255,255,255,0.8);
       position: relative;
       overflow: hidden;
+    }
+
+    /* Footer photo background with dark gradient */
+    .footer-photo {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center 60%;
+    }
+
+    .footer-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        var(--footer) 0%,
+        rgba(10,38,36,0.97) 25%,
+        rgba(10,38,36,0.82) 55%,
+        rgba(10,38,36,0.55) 80%,
+        rgba(10,38,36,0.35) 100%
+      );
     }
 
     /* Palm silhouette in footer */
@@ -1611,6 +1633,9 @@
 
 <!-- FOOTER ───────────────────────────────── -->
 <footer>
+  <!-- Photo de fond en fondu -->
+  <div class="footer-photo" style="background-image:url('https://images.unsplash.com/photo-1596458162095-1daa37e973ec?auto=format&fit=crop&w=1800&q=85');"></div>
+
   <!-- Silhouette palmiers -->
   <svg class="footer-palms" viewBox="0 0 520 700" fill="white" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
     <!-- ── PALM 1 (large, right) — crown at 390,95 ── -->
