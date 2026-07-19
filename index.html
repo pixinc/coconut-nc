@@ -12,6 +12,11 @@
   <meta name="author" content="coconut.nc" />
   <link rel="canonical" href="https://coconut.nc" />
 
+  <!-- ── FAVICON ──────────────────────────────────────────────── -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <meta name="theme-color" content="#0A5C55" />
+
   <!-- ── OPEN GRAPH (Facebook, LinkedIn, WhatsApp…) ──────────── -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://coconut.nc" />
@@ -812,6 +817,43 @@
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     }
 
+    /* sortir.nc — fond sombre, accent ambre */
+    .pt-sortir {
+      background: radial-gradient(circle at 30% 25%, rgba(255,179,0,0.22), transparent 55%),
+                  linear-gradient(135deg, #141210 0%, #0d0d0d 60%, #1a1508 100%);
+    }
+
+    /* journal.nc — fond sombre, accent bleu */
+    .pt-journal {
+      background: radial-gradient(circle at 70% 30%, rgba(79,131,245,0.22), transparent 55%),
+                  linear-gradient(135deg, #0f1320 0%, #09090b 60%, #0d1730 100%);
+    }
+
+    /* Wordmark de marque dans les cartes projet */
+    .brand-wordmark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .brand-wordmark .bw-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-wordmark .bw-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
     /* Carousel arrows */
     .carousel-arrow {
       position: absolute;
@@ -863,87 +905,6 @@
       background: var(--teal);
       width: 24px;
     }
-
-    /* ════════════════════════════════════════════════
-       TÉMOIGNAGES
-    ═════════════════════════════════════════════════ */
-    .temoignages {
-      background: var(--bg);
-      padding: 100px 0;
-    }
-
-    .temoignages-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .temoignages-header h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .temoignages-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .temo-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 32px 28px;
-      transition: border-color var(--T), transform var(--T), box-shadow var(--T);
-    }
-
-    .temo-card:hover {
-      border-color: var(--teal-light);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(10,92,85,0.1);
-    }
-
-    .stars {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 16px;
-    }
-
-    .star { color: #F4C430; font-size: 0.9rem; }
-
-    .temo-card blockquote {
-      font-size: 0.92rem;
-      color: var(--text-mid);
-      line-height: 1.75;
-      font-style: italic;
-      margin-bottom: 24px;
-      padding-top: 4px;
-    }
-
-    .temo-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    .author-av {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal-mid), var(--teal-light));
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.82rem;
-      flex-shrink: 0;
-    }
-
-    .author-name { font-size: 0.88rem; font-weight: 700; color: var(--dark); }
-    .author-role { font-size: 0.78rem; color: var(--text-light); }
 
     /* ════════════════════════════════════════════════
        CONTACT CTA BAND
@@ -1291,7 +1252,6 @@
       .engagement-photo { height: 360px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .footer-main { grid-template-columns: 1fr 1fr; }
-      .temoignages-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
     }
 
     @media (max-width: 768px) {
@@ -1560,6 +1520,34 @@
             </div>
           </a>
 
+          <!-- sortir.nc — projet livré -->
+          <a class="project-card" href="https://sortir.nc" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;display:block;cursor:pointer;">
+            <div class="project-thumb pt-sortir">
+              <div class="brand-wordmark">
+                <div class="bw-name" style="color:#FFB300">sortir<span style="color:rgba(255,255,255,0.55)">.nc</span></div>
+                <div class="bw-tag" style="color:rgba(255,179,0,0.7)">Événements &amp; lieux</div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-category">Guide des sorties · Nouvelle-Calédonie</div>
+              <h4>sortir.nc</h4>
+            </div>
+          </a>
+
+          <!-- journal.nc — projet livré -->
+          <a class="project-card" href="https://journal.nc" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;display:block;cursor:pointer;">
+            <div class="project-thumb pt-journal">
+              <div class="brand-wordmark">
+                <div class="bw-name" style="color:#F1F5F9">journal<span style="color:#4F83F5">.nc</span></div>
+                <div class="bw-tag" style="color:rgba(79,131,245,0.8)">Toute l'actualité NC</div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-category">Actualité · Nouvelle-Calédonie</div>
+              <h4>journal.nc</h4>
+            </div>
+          </a>
+
           <!-- Projets en cours -->
           <div class="project-card">
             <div class="project-thumb pt-2">
@@ -1671,54 +1659,6 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       Les projets clients en cours ne peuvent pas encore être présentés publiquement — confidentialité respectée.
     </p>
-  </div>
-</section>
-
-<!-- TÉMOIGNAGES ───────────────────────────── -->
-<section class="temoignages" id="temoignages">
-  <div class="container">
-    <div class="temoignages-header reveal">
-      <div class="label">Témoignages</div>
-      <h2>Ce que disent nos clients</h2>
-    </div>
-
-    <div class="temoignages-grid">
-      <div class="temo-card reveal reveal-d1">
-        <div class="stars">★★★★★</div>
-        <blockquote>«&nbsp;Coconut a transformé notre façon de travailler. L'ERP qu'ils ont développé nous fait gagner des heures chaque semaine. L'équipe est réactive et vraiment investie dans notre succès.&nbsp;»</blockquote>
-        <div class="temo-author">
-          <div class="author-av">MK</div>
-          <div>
-            <div class="author-name">Marie Katriane</div>
-            <div class="author-role">Directrice, Groupe KaléDist</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="temo-card reveal reveal-d2">
-        <div class="stars">★★★★★</div>
-        <blockquote>«&nbsp;Notre site a multiplié nos leads par trois en six mois. Le design est exactement ce qu'on voulait — professionnel et qui correspond parfaitement à notre image de marque.&nbsp;»</blockquote>
-        <div class="temo-author">
-          <div class="author-av">JB</div>
-          <div>
-            <div class="author-name">Jean-Louis Bertrand</div>
-            <div class="author-role">PDG, Nouméa Immo</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="temo-card reveal reveal-d3">
-        <div class="stars">★★★★★</div>
-        <blockquote>«&nbsp;Ce qui nous a séduit chez Coconut, c'est leur compréhension profonde du marché calédonien. Ils ont construit quelque chose d'unique, pensé pour nos réalités locales.&nbsp;»</blockquote>
-        <div class="temo-author">
-          <div class="author-av">ST</div>
-          <div>
-            <div class="author-name">Sophie Tériierooiterai</div>
-            <div class="author-role">Fondatrice, Tribus Market</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
