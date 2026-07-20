@@ -829,6 +829,12 @@
                   linear-gradient(135deg, #0f1320 0%, #09090b 60%, #0d1730 100%);
     }
 
+    /* eden.nc — fond sombre, accent vert */
+    .pt-eden {
+      background: radial-gradient(circle at 30% 30%, rgba(16,185,129,0.22), transparent 55%),
+                  linear-gradient(135deg, #0b1a12 0%, #09090b 60%, #082018 100%);
+    }
+
     /* Wordmark de marque dans les cartes projet */
     .brand-wordmark {
       position: absolute;
@@ -1548,6 +1554,20 @@
             </div>
           </a>
 
+          <!-- eden.nc — projet livré -->
+          <a class="project-card" href="https://eden.nc" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;display:block;cursor:pointer;">
+            <div class="project-thumb pt-eden">
+              <div class="brand-wordmark">
+                <div class="bw-name" style="color:#F1F5F9">eden<span style="color:#10B981">.nc</span></div>
+                <div class="bw-tag" style="color:rgba(16,185,129,0.8)">Le paradis calédonien</div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-category">Tourisme &amp; nature · Nouvelle-Calédonie</div>
+              <h4>eden.nc</h4>
+            </div>
+          </a>
+
           <!-- Projets en cours -->
           <div class="project-card">
             <div class="project-thumb pt-2">
@@ -1744,6 +1764,8 @@
               <label for="message">Décrivez votre projet *</label>
               <textarea id="message" placeholder="Parlez-nous de votre projet, vos objectifs, votre calendrier…" required></textarea>
             </div>
+            <!-- Champ anti-spam (honeypot) : masqué aux humains, piège à bots -->
+            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
             <div class="form-submit-wrap">
               <button type="submit" class="form-btn">
                 Envoyer ma demande
@@ -1968,18 +1990,46 @@
   }, { passive: true });
 
   // ── Contact form
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.form-btn');
-    btn.textContent = '✓ Message envoyé, merci !';
-    btn.style.background = '#1A8A6E';
+    const form = e.target;
+    const btn = form.querySelector('.form-btn');
+    const original = btn.innerHTML;
+
+    const payload = {
+      name: form.querySelector('#name').value.trim(),
+      email: form.querySelector('#email').value.trim(),
+      phone: form.querySelector('#phone').value.trim(),
+      type: form.querySelector('#type').value,
+      message: form.querySelector('#message').value.trim(),
+      company: form.querySelector('#company').value, // honeypot
+    };
+
     btn.disabled = true;
-    setTimeout(() => {
-      btn.innerHTML = 'Envoyer ma demande <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M9 4l4 4-4 4"/></svg>';
-      btn.style.background = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3500);
+    btn.textContent = 'Envoi…';
+
+    const reset = (label, bg) => {
+      btn.textContent = label;
+      btn.style.background = bg;
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3500);
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Réponse ' + res.status);
+      form.reset();
+      reset('✓ Message envoyé, merci !', '#1A8A6E');
+    } catch (err) {
+      reset('✕ Erreur, réessayez', '#C0392B');
+    }
   }
 </script>
 </body>

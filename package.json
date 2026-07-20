@@ -1,0 +1,9 @@
+{
+  "name": "coconut-nc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine coconut.nc — agence digitale (Nouméa, Nouvelle-Calédonie)",
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}
